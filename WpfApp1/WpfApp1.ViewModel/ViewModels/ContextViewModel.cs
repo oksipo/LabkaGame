@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
+using WpfApp1.Helpers;
 using WpfApp1.Model.Models;
 
 namespace WpfApp1.ViewModel
@@ -6,6 +8,8 @@ namespace WpfApp1.ViewModel
     public class ContextViewModel : BaseViewModel
     {
         public GameContext Context;
+
+        public ObservableCollection<CardViewModel> Deck { get; set; }
 
         public int Religion
         {
@@ -45,6 +49,16 @@ namespace WpfApp1.ViewModel
                 this.Context.Army = value;
                 OnPropertyChanged(nameof(Army));
             }
+        }
+
+        public CardViewModel GetNextCard()
+        {
+            return this.Deck.GetRandom();
+        }
+
+        public void RemoveCard(int Id)
+        {
+            this.Deck.Remove(this.Deck.FirstOrDefault(x => x.Id == Id));
         }
 
         public ContextViewModel(GameContext context)

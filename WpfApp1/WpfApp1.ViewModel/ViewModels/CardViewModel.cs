@@ -1,4 +1,5 @@
 ﻿using System;
+using Enums;
 using WpfApp1.Helpers;
 using WpfApp1.Model.Models;
 
@@ -10,6 +11,16 @@ namespace WpfApp1.ViewModel
         private string text;
         private string imagePath;
         private string name;
+
+        public int Id { get; set; }
+
+        public string YesText { get; set; }
+
+        public string NoText { get; set; }
+
+        public ResourceTypes YesHighlight { get; set; }
+
+        public ResourceTypes NoHighlight { get; set; }
 
         public string Text
         {
@@ -45,9 +56,8 @@ namespace WpfApp1.ViewModel
 
         public Action<ContextViewModel> OnRight { get; set; }
 
-        public CardViewModel(CharacterModel character, TaskModel task)
+        public CardViewModel(CharacterModel character)
         {
-            this.Text = task.Text;
             this.ImagePath = CharacterHelper.GetPictureByType(character.CharType);
             this.Name = character.Name;
         }

@@ -7,19 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="400" ResizeMode="NoResize">
     <Grid>
-        <Image HorizontalAlignment="Center" Height="256" VerticalAlignment="Center" Width="256" Source= "{Binding TaskCard.ImagePath}" />
-        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="69,473,0,0" VerticalAlignment="Top" Width="100" Minimum="0" Maximum="1000" Value="{Binding Context.Religion}" />
-        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="225,473,0,0" VerticalAlignment="Top" Width="100" Minimum="0" Maximum="1000" Value="{Binding Context.People}"/>
-        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="225,532,0,0" VerticalAlignment="Top" Width="100" Minimum="0" Maximum="1000" Value="{Binding Context.Army}"/>
-        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="69,532,0,0" VerticalAlignment="Top" Width="100" Minimum="0" Maximum="1000" Value="{Binding Context.Money}"/>
-        <Image HorizontalAlignment="Left" Height="32" Margin="32,462,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/cross.png"/>
-        <Image HorizontalAlignment="Left" Height="32" Margin="193,462,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/human.png"/>
-        <Image HorizontalAlignment="Left" Height="32" Margin="32,520,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/money.png"/>
-        <Image HorizontalAlignment="Left" Height="32" Margin="193,520,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/sword.png"/>
+        <Image HorizontalAlignment="Center" Height="256" VerticalAlignment="Center" Width="256" Source= "Resources/Characters/priest.jpg" />
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="69,473,0,0" VerticalAlignment="Top" Width="100" Minimum="0" Maximum="1000" Value="{Binding Context.Religion}" Name ="ReligionBar" />
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="225,473,0,0" VerticalAlignment="Top" Width="100" Minimum="0" Maximum="1000" Value="{Binding Context.People}" Name="PeopleBar"/>
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="225,532,0,0" VerticalAlignment="Top" Width="100" Minimum="0" Maximum="1000" Value="{Binding Context.Army}" Name="ArmyBar"/>
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="69,532,0,0" VerticalAlignment="Top" Width="100" Minimum="0" Maximum="1000" Value="{Binding Context.Money}" Name="MoneyBar"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="32,462,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/cross.png" Name="ReligionPic"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="193,462,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/human.png" Name ="PeoplePic"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="32,520,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/money.png" Name="MoneyPic"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="193,520,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/sword.png" Name="ArmyPic"/>
         <Label Content="{Binding TaskCard.Name}" FontStyle="Italic" FontFamily="Monotype Corsiva" FontSize="20" HorizontalAlignment="Center" Margin="0,414,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Center" FontStyle="Italic" FontFamily="Monotype Corsiva" FontSize="20" Margin="0,54,0,0" TextWrapping="Wrap" Text="{Binding TaskCard.Text}" MaxWidth="300" VerticalAlignment="Top"/>
-        <Button Name="Left" Content="&#xD;&#xA;" Height="256" Width="128" Margin="69,158,197,157" RenderTransformOrigin="1,1" Opacity="0" Click="Left_Click"/>
-            <Button Name="Right" Content="" Height="256" Width="128" Margin="197,158,69,157" Opacity="0" Click="Right_Click"/>
+        <TextBlock TextWrapping="Wrap" Text="{Binding TaskCard.YesText}" MaxWidth="126" MaxHeight="70" FontStyle="Italic" FontFamily="Monotype Corsiva" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="71,158,197,343" />
+        <Button Name="Left" Height="256" Width="128" Margin="69,158,197,157" RenderTransformOrigin="1,1" Opacity="0" Click="Left_Click" MouseEnter="Left_OnMouseEnter" MouseLeave="Left_OnMouseLeave"/>
+        <Button Name="Right" Content="" Height="256" Width="128" Margin="197,158,69,157" Opacity="0" Click="Right_Click" MouseEnter="Right_OnMouseEnter" MouseLeave="Right_OnMouseLeave"/>
+        <TextBlock TextWrapping="Wrap" Text="{Binding TaskCard.NoText}" MaxWidth="126" MaxHeight="70" FontStyle="Italic" FontFamily="Monotype Corsiva" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="197,158,71,343" TextAlignment="Right" />
 
     </Grid>
 </Window>

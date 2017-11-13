@@ -1,4 +1,7 @@
 ﻿using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Effects;
 using Enums;
 using WpfApp1.Helpers;
 using WpfApp1.Model.Models;
@@ -14,45 +17,90 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            var testChar = new CharacterModel();
-            testChar.CharType = CharacterTypes.Priest;
-            testChar.Name = CharacterHelper.GetNameByType(testChar.CharType);
-            var testTask = new TaskModel();
-            testTask.Text = "Мілорд, щурі їдять наші запаси їжі! Направити проти них армію?";
-            var context = new GameContext();
-            var contextModel = new ContextViewModel(context);
-            var Card = new CardViewModel(testChar, testTask);
-
-            Card.OnRight = gameContext =>
-            {
-                gameContext.People -= 100;
-                gameContext.Army += 50;
-            };
-            Card.OnLeft = gameContext =>
-            {
-                gameContext.People += 200;
-                gameContext.Army -= 100;
-                gameContext.Money -= 50;
-            };
-
-            var Main = new MainViewModel
-            {
-                TaskCard = Card,
-                Context = contextModel
-            };
-            this.DataContext = Main;
+            this.MoneyBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+            this.ArmyBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+            this.PeopleBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+            this.ReligionBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+            var main = AppStarter.GetMainView();
+            this.DataContext = main;
         }
 
         private void Left_Click(object sender, RoutedEventArgs e)
         {
             var main = this.DataContext as MainViewModel;
             main.TaskCard.OnLeft.Invoke(main.Context);
+            main.TaskCard = main.Context.GetNextCard();
         }
 
         private void Right_Click(object sender, RoutedEventArgs e)
         {
             var main = this.DataContext as MainViewModel;
             main.TaskCard.OnRight.Invoke(main.Context);
+            main.TaskCard = main.Context.GetNextCard();
+        }
+
+        private void Left_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            var main = this.DataContext as MainViewModel;
+            if (main.TaskCard.YesHighlight.HasFlag(ResourceTypes.Money))
+            {
+                this.MoneyBar.Foreground = new SolidColorBrush(Colors.Gold);
+            }
+
+            if (main.TaskCard.YesHighlight.HasFlag(ResourceTypes.Army))
+            {
+                this.ArmyBar.Foreground = new SolidColorBrush(Colors.Gold);
+            }
+
+            if (main.TaskCard.YesHighlight.HasFlag(ResourceTypes.People))
+            {
+                this.PeopleBar.Foreground = new SolidColorBrush(Colors.Gold);
+            }
+
+            if (main.TaskCard.YesHighlight.HasFlag(ResourceTypes.Religion))
+            {
+                this.ReligionBar.Foreground = new SolidColorBrush(Colors.Gold);
+            }
+        }
+
+        private void Left_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            this.MoneyBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+            this.ArmyBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+            this.PeopleBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+            this.ReligionBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+        }
+
+        private void Right_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            var main = this.DataContext as MainViewModel;
+            if (main.TaskCard.NoHighlight.HasFlag(ResourceTypes.Money))
+            {
+                this.MoneyBar.Foreground = new SolidColorBrush(Colors.Gold);
+            }
+
+            if (main.TaskCard.NoHighlight.HasFlag(ResourceTypes.Army))
+            {
+                this.ArmyBar.Foreground = new SolidColorBrush(Colors.Gold);
+            }
+
+            if (main.TaskCard.NoHighlight.HasFlag(ResourceTypes.People))
+            {
+                this.PeopleBar.Foreground = new SolidColorBrush(Colors.Gold);
+            }
+
+            if (main.TaskCard.NoHighlight.HasFlag(ResourceTypes.Religion))
+            {
+                this.ReligionBar.Foreground = new SolidColorBrush(Colors.Gold);
+            }
+        }
+
+        private void Right_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            this.MoneyBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+            this.ArmyBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+            this.PeopleBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+            this.ReligionBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
         }
     }
 }
