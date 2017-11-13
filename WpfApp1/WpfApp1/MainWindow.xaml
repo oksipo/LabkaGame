@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="400" ResizeMode="NoResize">
+    <Grid>
+        <Image HorizontalAlignment="Center" Height="256" VerticalAlignment="Center" Width="256" Source= "{Binding TaskCard.ImagePath}" />
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="69,473,0,0" VerticalAlignment="Top" Width="100" />
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="225,473,0,0" VerticalAlignment="Top" Width="100"/>
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="225,532,0,0" VerticalAlignment="Top" Width="100"/>
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="69,532,0,0" VerticalAlignment="Top" Width="100"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="32,462,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/cross.png"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="193,462,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/human.png"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="32,520,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/money.png"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="193,520,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Icons/sword.png"/>
+        <Label Content="{Binding TaskCard.Name}" FontStyle="Italic" FontFamily="Monotype Corsiva" FontSize="20" HorizontalAlignment="Center" Margin="0,414,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Center" FontStyle="Italic" FontFamily="Monotype Corsiva" FontSize="20" Margin="0,54,0,0" TextWrapping="Wrap" Text="{Binding TaskCard.Text}" MaxWidth="300" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
