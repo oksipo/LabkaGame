@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using Enums;
 using WpfApp1.Helpers;
 using WpfApp1.Model.Models;
@@ -32,12 +19,40 @@ namespace WpfApp1
             testChar.Name = CharacterHelper.GetNameByType(testChar.CharType);
             var testTask = new TaskModel();
             testTask.Text = "Мілорд, щурі їдять наші запаси їжі! Направити проти них армію?";
+            var context = new GameContext();
+            var contextModel = new ContextViewModel(context);
             var Card = new CardViewModel(testChar, testTask);
+
+            Card.OnRight = gameContext =>
+            {
+                gameContext.People -= 100;
+                gameContext.Army += 50;
+            };
+            Card.OnLeft = gameContext =>
+            {
+                gameContext.People += 200;
+                gameContext.Army -= 100;
+                gameContext.Money -= 50;
+            };
+
             var Main = new MainViewModel
             {
-                TaskCard = Card
+                TaskCard = Card,
+                Context = contextModel
             };
             this.DataContext = Main;
+        }
+
+        private void Left_Click(object sender, RoutedEventArgs e)
+        {
+            var main = this.DataContext as MainViewModel;
+            main.TaskCard.OnLeft.Invoke(main.Context);
+        }
+
+        private void Right_Click(object sender, RoutedEventArgs e)
+        {
+            var main = this.DataContext as MainViewModel;
+            main.TaskCard.OnRight.Invoke(main.Context);
         }
     }
 }

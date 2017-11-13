@@ -9,9 +9,5 @@ namespace WpfApp1.Model.Models
     public class TaskModel
     {
         public string Text { get; set; }
-
-        public Action<GameContext> OnLeft { get; set; }
-
-        public Action<GameContext> OnRight { get; set; }
     }
 }

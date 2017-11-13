@@ -41,17 +41,15 @@ namespace WpfApp1.ViewModel
             }
         }
 
-        public Action<GameContext> OnLeft { get; set; }
+        public Action<ContextViewModel> OnLeft { get; set; }
 
-        public Action<GameContext> OnRight { get; set; }
+        public Action<ContextViewModel> OnRight { get; set; }
 
         public CardViewModel(CharacterModel character, TaskModel task)
         {
             this.Text = task.Text;
             this.ImagePath = CharacterHelper.GetPictureByType(character.CharType);
             this.Name = character.Name;
-            this.OnLeft = task.OnLeft;
-            this.OnRight = task.OnRight;
         }
     }
 }
