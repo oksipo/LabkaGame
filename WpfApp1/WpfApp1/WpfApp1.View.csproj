@@ -152,5 +152,14 @@
   <ItemGroup>
     <Resource Include="Resources\Endings\NoPeople.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endings\TooMuchReligion.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endings\NoReligion1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endings\NoReligion2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

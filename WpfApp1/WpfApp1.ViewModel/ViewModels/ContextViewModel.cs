@@ -12,7 +12,7 @@ namespace WpfApp1.ViewModel
 
         public ObservableCollection<CardViewModel> Deck { get; set; }
 
-        public CardViewModel Next { get; set; } = null;
+        public CardViewModel Next { get; set; }
 
         public int Religion
         {
@@ -78,6 +78,16 @@ namespace WpfApp1.ViewModel
             if (People <= 0)
             {
                 Next = AppStarter.NoPeopleCard;
+            }
+
+            if (Religion >= 1000)
+            {
+                Next = AppStarter.TooMuchReligionCard;
+            }
+
+            if (Religion <= 0)
+            {
+                Next = AppStarter.NoReligionCards.GetRandom();
             }
 
             var temp = Next;

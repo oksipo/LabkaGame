@@ -30,6 +30,10 @@ namespace WpfApp1.ViewModel
 
         public static CardViewModel NoPeopleCard { get; set; }
 
+        public static CardViewModel TooMuchReligionCard { get; set; }
+
+        public static List<CardViewModel> NoReligionCards { get; set; }
+
         private static void GenerateCharacters()
         {
             priest = new CharacterModel
@@ -211,6 +215,29 @@ namespace WpfApp1.ViewModel
                 Id = 100,
                 Text = "Країною шириться чума. Ви вмираєте одним із перших.",
                 ImagePath = "Resources/Endings/NoPeople.jpg"
+            };
+
+            TooMuchReligionCard = new CardViewModel(storyteller)
+            {
+                Id = 100,
+                Text = "Церква захоплює владу в країні, а з вас виходить непоганий мученик.",
+                ImagePath = "Resources/Endings/TooMuchReligionReligion.jpg"
+            };
+
+            NoReligionCards = new List<CardViewModel>
+            {
+                new CardViewModel(storyteller)
+                {
+                    Id= 100,
+                    Text = "Вітаю, ви єретик! Вас спалили, а ваше ім'я заборонено згадувати.",
+                    ImagePath = "Resources/Endings/NoReligion.png"
+                },
+                new CardViewModel(storyteller)
+                {
+                    Id= 100,
+                    Text = "Погана новина: ви єретик і ваше тіло згодували собакам. Хороша новина: собачки такі милі.",
+                    ImagePath = "Resources/Endings/NoReligion2.jpg"
+                }
             };
         }
 

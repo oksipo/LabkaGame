@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using Enums;
 using WpfApp1.ViewModel;
 
@@ -26,6 +28,21 @@ namespace WpfApp1
         {
             var main = this.DataContext as MainViewModel;
             main.TaskCard.OnLeft?.Invoke(main.Context);
+            var storyboard = new Storyboard
+            {
+                Duration = new Duration(TimeSpan.FromSeconds(0.5))
+            };
+            var rotateAnimation = new DoubleAnimation()
+            {
+                From = 0,
+                To = 360,
+                Duration = storyboard.Duration
+            };
+            Storyboard.SetTarget(rotateAnimation, this.MainImage);
+            Storyboard.SetTargetProperty(rotateAnimation, new PropertyPath("(UIElement.RenderTransform).(RotateTransform.Angle)"));
+            storyboard.Children.Add(rotateAnimation);
+            storyboard.Begin();
+
             main.TaskCard = main.Context.GetNextCard();
         }
 
@@ -33,6 +50,20 @@ namespace WpfApp1
         {
             var main = this.DataContext as MainViewModel;
             main.TaskCard.OnRight?.Invoke(main.Context);
+            var storyboard = new Storyboard
+            {
+                Duration = new Duration(TimeSpan.FromSeconds(0.5))
+            };
+            var rotateAnimation = new DoubleAnimation()
+            {
+                From = 360,
+                To = 0,
+                Duration = storyboard.Duration
+            };
+            Storyboard.SetTarget(rotateAnimation, this.MainImage);
+            Storyboard.SetTargetProperty(rotateAnimation, new PropertyPath("(UIElement.RenderTransform).(RotateTransform.Angle)"));
+            storyboard.Children.Add(rotateAnimation);
+            storyboard.Begin();
             main.TaskCard = main.Context.GetNextCard();
         }
 
