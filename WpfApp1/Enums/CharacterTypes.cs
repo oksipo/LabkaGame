@@ -4,6 +4,8 @@
     {
         Priest,
         Knight,
-        Trader
+        Trader,
+        Butcher,
+        Storyteller
     }
 }

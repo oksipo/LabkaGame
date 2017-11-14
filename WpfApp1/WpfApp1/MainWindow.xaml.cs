@@ -1,10 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Effects;
 using Enums;
-using WpfApp1.Helpers;
-using WpfApp1.Model.Models;
 using WpfApp1.ViewModel;
 
 namespace WpfApp1
@@ -28,14 +25,14 @@ namespace WpfApp1
         private void Left_Click(object sender, RoutedEventArgs e)
         {
             var main = this.DataContext as MainViewModel;
-            main.TaskCard.OnLeft.Invoke(main.Context);
+            main.TaskCard.OnLeft?.Invoke(main.Context);
             main.TaskCard = main.Context.GetNextCard();
         }
 
         private void Right_Click(object sender, RoutedEventArgs e)
         {
             var main = this.DataContext as MainViewModel;
-            main.TaskCard.OnRight.Invoke(main.Context);
+            main.TaskCard.OnRight?.Invoke(main.Context);
             main.TaskCard = main.Context.GetNextCard();
         }
 

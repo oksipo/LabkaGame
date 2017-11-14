@@ -9,14 +9,17 @@ namespace WpfApp1.Helpers
         {
             {CharacterTypes.Priest, "Resources/Characters/priest.jpg" },
             {CharacterTypes.Knight, "Resources/Characters/knight.jpg" },
-            {CharacterTypes.Trader, "Resources/Characters/trader.jpg" }
+            {CharacterTypes.Trader, "Resources/Characters/trader.jpg" },
+            {CharacterTypes.Butcher, "Resources/Characters/butcher.jpg" },
+            {CharacterTypes.Storyteller, "" }
         };
 
         static Dictionary<CharacterTypes, string> CharacterNamings = new Dictionary<CharacterTypes, string>
         {
             {CharacterTypes.Priest, "Отець " },
             {CharacterTypes.Knight, "Сер " },
-            {CharacterTypes.Trader, "" }
+            {CharacterTypes.Trader, "" },
+            {CharacterTypes.Butcher, "Кат" }
         };
 
         static Dictionary<CharacterTypes, List<string>> CharacterNames = new Dictionary<CharacterTypes, List<string>>
@@ -54,6 +57,10 @@ namespace WpfApp1.Helpers
             {
                 "Марко",
                 "Колумб"
+            } },
+            {CharacterTypes.Butcher, new List<string>
+            {
+                ""
             } }
         };
 

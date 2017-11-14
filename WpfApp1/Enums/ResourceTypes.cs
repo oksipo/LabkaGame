@@ -8,6 +8,6 @@ namespace Enums
         Religion = 1,
         Money = 2,
         Army = 4,
-        People = 5
+        People = 8
     }
 }

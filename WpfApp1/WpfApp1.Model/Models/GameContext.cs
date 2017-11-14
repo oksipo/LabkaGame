@@ -12,10 +12,6 @@ namespace WpfApp1.Model.Models
 
         public int People { get; set; } = 500;
 
-        public delegate void UpdateHandler();
-
-        public event UpdateHandler Update;
-
         public GameContext()
         {
             Random rand = new Random();

@@ -122,5 +122,35 @@
   <ItemGroup>
     <Resource Include="Resources\Characters\priest.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Characters\knight.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Characters\trader.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Characters\butcher.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endings\victory.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endings\noMoney.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endings\TooMuchMoney1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endings\TooMuchMoney2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endings\TooMuchMoney3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endings\TooMuchPeople.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endings\NoPeople.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

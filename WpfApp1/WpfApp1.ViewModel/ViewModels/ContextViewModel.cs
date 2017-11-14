@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using WpfApp1.Helpers;
 using WpfApp1.Model.Models;
@@ -10,6 +11,8 @@ namespace WpfApp1.ViewModel
         public GameContext Context;
 
         public ObservableCollection<CardViewModel> Deck { get; set; }
+
+        public CardViewModel Next { get; set; } = null;
 
         public int Religion
         {
@@ -53,12 +56,43 @@ namespace WpfApp1.ViewModel
 
         public CardViewModel GetNextCard()
         {
-            return this.Deck.GetRandom();
+            if (Deck.Count == 0)
+            {
+                Next = AppStarter.WinCard;
+            }
+            if (Money <= 0)
+            {
+                Next = AppStarter.NoMoneyCard;
+            }
+
+            if (Money >= 1000)
+            {
+                Next = AppStarter.TooMuchMoneyCards.GetRandom();
+            }
+
+            if (People >= 1000)
+            {
+                Next = AppStarter.TooMuchPeopleCard;
+            }
+
+            if (People <= 0)
+            {
+                Next = AppStarter.NoPeopleCard;
+            }
+
+            var temp = Next;
+            Next = null;
+            return temp ?? this.Deck.GetRandom();
         }
 
         public void RemoveCard(int Id)
         {
             this.Deck.Remove(this.Deck.FirstOrDefault(x => x.Id == Id));
+        }
+
+        public void RemoveCards(Func<CardViewModel, bool> criteria)
+        {
+            this.Deck = new ObservableCollection<CardViewModel>(this.Deck.Except(this.Deck.Where(criteria)));
         }
 
         public ContextViewModel(GameContext context)
