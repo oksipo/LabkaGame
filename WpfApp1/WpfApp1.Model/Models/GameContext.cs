@@ -12,6 +12,8 @@ namespace WpfApp1.Model.Models
 
         public int People { get; set; } = 500;
 
+        public int Years { get; set; } = 0;
+
         public GameContext()
         {
             Random rand = new Random();

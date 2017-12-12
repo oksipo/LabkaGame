@@ -10,7 +10,7 @@ namespace WpfApp1.ViewModel
 
         private string text;
         private string imagePath;
-        private string name;
+        private CharacterModel character;
 
         public int Id { get; set; }
 
@@ -21,6 +21,8 @@ namespace WpfApp1.ViewModel
         public ResourceTypes YesHighlight { get; set; }
 
         public ResourceTypes NoHighlight { get; set; }
+
+        public CardTags Tags;
 
         public string Text
         {
@@ -44,10 +46,10 @@ namespace WpfApp1.ViewModel
 
         public string Name
         {
-            get => this.name;
+            get => this.character.Name;
             set
             {
-                this.name = value;
+                this.character.Name = value;
                 OnPropertyChanged(nameof(Name));
             }
         }
@@ -59,7 +61,7 @@ namespace WpfApp1.ViewModel
         public CardViewModel(CharacterModel character)
         {
             this.ImagePath = CharacterHelper.GetPictureByType(character.CharType);
-            this.Name = character.Name;
+            this.character = character;
         }
     }
 }

@@ -1,10 +1,13 @@
-﻿namespace WpfApp1.ViewModel
+﻿using WpfApp1.ViewModel.ViewModels;
+
+namespace WpfApp1.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
         private CardViewModel taskCard;
 
         private ContextViewModel contextModel;
+
 
         public CardViewModel TaskCard
         {
@@ -24,6 +27,13 @@
                 this.contextModel = value;
                 OnPropertyChanged(nameof(contextModel));
             }
+        }
+
+        public HistoryViewModel History { get; set; }
+
+        public MainViewModel()
+        {
+            History = new HistoryViewModel();
         }
     }
 }

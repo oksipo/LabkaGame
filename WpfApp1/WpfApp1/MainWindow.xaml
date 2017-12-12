@@ -26,6 +26,8 @@
         <Button Name="Left" Height="256" Width="128" Margin="69,158,197,157" RenderTransformOrigin="1,1" Opacity="0" Click="Left_Click" MouseEnter="Left_OnMouseEnter" MouseLeave="Left_OnMouseLeave"/>
         <Button Name="Right" Content="" Height="256" Width="128" Margin="197,158,69,157" Opacity="0" Click="Right_Click" MouseEnter="Right_OnMouseEnter" MouseLeave="Right_OnMouseLeave"/>
         <TextBlock TextWrapping="Wrap" Text="{Binding TaskCard.NoText}" MaxWidth="126" MaxHeight="70" FontStyle="Italic" FontFamily="Monotype Corsiva" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="197,158,71,343" TextAlignment="Right" Foreground="DarkGoldenrod" />
+        <TextBlock HorizontalAlignment="Left" Margin="349,0,0,0" TextWrapping="Wrap" Text="{Binding Context.YearsString}" VerticalAlignment="Top"/>
+        <Button Content="Історія" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="44" Click="Button_Click"/>
 
     </Grid>
 </Window>

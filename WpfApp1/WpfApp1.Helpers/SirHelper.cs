@@ -2,9 +2,9 @@
 
 namespace WpfApp1.Helpers
 {
-    public static class SirHelper
+    public  class helper : Ihelper
     {
-        private static List<string> namings = new List<string>
+        private  List<string> namings = new List<string>
         {
             "Сір, ",
             "Мілорд, ",
@@ -12,14 +12,10 @@ namespace WpfApp1.Helpers
             "Королю, ",
             "Ваша величносте, ",
             "Ваша світлосте, ",
-            "Імператоре, ",
-            "",
-            "",
-            "",
-            "",
+            "Імператоре, "
         };
 
-        public static string GetBeginning()
+        public  string GetBeginning()
         {
             return namings.GetRandom();
         }

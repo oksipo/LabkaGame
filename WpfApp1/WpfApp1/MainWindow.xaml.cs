@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Enums;
+using WpfApp1.Model.Models;
 using WpfApp1.ViewModel;
 
 namespace WpfApp1
@@ -11,8 +12,9 @@ namespace WpfApp1
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
+        public bool Lost { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -42,8 +44,23 @@ namespace WpfApp1
             Storyboard.SetTargetProperty(rotateAnimation, new PropertyPath("(UIElement.RenderTransform).(RotateTransform.Angle)"));
             storyboard.Children.Add(rotateAnimation);
             storyboard.Begin();
-
-            main.TaskCard = main.Context.GetNextCard();
+            if (!main.Context.IsEnd)
+            {
+                main.TaskCard = main.Context.GetNextCard();
+            }
+            else
+            {
+                if (!Lost)
+                {
+                    Lost = true;
+                    main.History.Records.Add(new HistoryRecord
+                    {
+                        PlayDate = DateTime.Today,
+                        Years = main.Context.Years
+                    });
+                    main.History.Serialize();
+                }
+            }
         }
 
         private void Right_Click(object sender, RoutedEventArgs e)
@@ -64,7 +81,23 @@ namespace WpfApp1
             Storyboard.SetTargetProperty(rotateAnimation, new PropertyPath("(UIElement.RenderTransform).(RotateTransform.Angle)"));
             storyboard.Children.Add(rotateAnimation);
             storyboard.Begin();
-            main.TaskCard = main.Context.GetNextCard();
+            if (!main.Context.IsEnd)
+            {
+                main.TaskCard = main.Context.GetNextCard();
+            }
+            else
+            {
+                if (!Lost)
+                {
+                    Lost = true;
+                    main.History.Records.Add(new HistoryRecord
+                    {
+                        PlayDate = DateTime.Now,
+                        Years = main.Context.Years
+                    });
+                    main.History.Serialize();
+                }
+            }
         }
 
         private void Left_OnMouseEnter(object sender, MouseEventArgs e)
@@ -129,6 +162,13 @@ namespace WpfApp1
             this.ArmyBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
             this.PeopleBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
             this.ReligionBar.Foreground = new SolidColorBrush(Colors.LawnGreen);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var newWindow =new HistoryTable();
+            newWindow.DataContext = (this.DataContext as MainViewModel).History;
+            newWindow.Show();
         }
     }
 }
